@@ -1,6 +1,6 @@
 // Create the tile layer that will be the background of our map.
 var streetmap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 });
 
 // Initialize all the LayerGroups that we'll use.
@@ -40,7 +40,7 @@ var info = L.control({
 });
 
 // When the layer control is added, insert a div with the class of "legend".
-info.onAdd = function() {
+info.onAdd = function () {
   var div = L.DomUtil.create("div", "legend");
   return div;
 };
@@ -70,10 +70,11 @@ var icons = {
 };
 
 // Perform an API call to the Divvy Bike station information endpoint.
-d3.json("https://gbfs.divvybikes.com/gbfs/en/station_information.json").then(function(infoRes) {
+d3.json("https://gbfs.divvybikes.com/gbfs/en/station_information.json").then(function (infoRes) {
+
 
   // When the first API call completes, perform another call to the Divvy Bike station status endpoint.
-  d3.json("https://gbfs.divvybikes.com/gbfs/en/station_status.json").then(function(statusRes) {
+  d3.json("https://gbfs.divvybikes.com/gbfs/en/station_status.json").then(function (statusRes) {
     var updatedAt = infoRes.last_updated;
     var stationStatus = statusRes.data.stations;
     var stationInfo = infoRes.data.stations;
@@ -98,7 +99,7 @@ d3.json("https://gbfs.divvybikes.com/gbfs/en/station_information.json").then(fun
       if (!station.num_bikes_available) {
         stationStatusCode = "EMPTY";
       }
-      
+
       // If a station has less than five bikes, it's status is low.
       else if (station.num_bikes_available < 5) {
         stationStatusCode = "LOW";
@@ -110,16 +111,20 @@ d3.json("https://gbfs.divvybikes.com/gbfs/en/station_information.json").then(fun
 
       // Update the station count.
       stationCount[stationStatusCode]++;
+
       // Create a new marker with the appropriate icon and coordinates.
       var newMarker = L.marker([station.lat, station.lon], {
         icon: icons[stationStatusCode]
       });
 
-      // Add the new marker to the appropriate layer.
+      // // Add the new marker to the appropriate layer.
       newMarker.addTo(layers[stationStatusCode]);
 
       // Bind a popup to the marker that will  display on being clicked. This will be rendered as HTML.
       newMarker.bindPopup(station.name + "<br> Capacity: " + station.capacity + "<br>" + station.num_bikes_available + " Bikes Available");
+
+
+
     }
 
     // Call the updateLegend function, which will update the legend!
@@ -131,7 +136,7 @@ d3.json("https://gbfs.divvybikes.com/gbfs/en/station_information.json").then(fun
 function updateLegend(time, stationCount) {
   document.querySelector(".legend").innerHTML = [
     "<p><strong>Station Bike Capacity</strong></p>",
-        "<p class='empty'>Empty: " + stationCount.EMPTY + "</p>",
+    "<p class='empty'>Empty: " + stationCount.EMPTY + "</p>",
     "<p class='low'>Low: " + stationCount.LOW + "</p>",
     "<p class='full'>Full: " + stationCount.NORMAL + "</p>",
     "<p><em>Updated: " + moment.unix(time).format("h:mm:ss A") + "</em></p>"
