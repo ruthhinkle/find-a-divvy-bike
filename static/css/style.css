@@ -19,21 +19,57 @@ body,
 }
 
 .legend .low {
-  color: #ec8a2e;
+  color: #225E6F;
 }
 
 .legend .empty {
-  color: #a0353a;
-}
-
-.legend .coming-soon {
-  color: #f4ba48;
+  color: #D5361F;
 }
 
 .legend .full {
-  color: #1b904f;
+  color: #41B4E4;
 }
 
-.legend .out-of-order {
-  color: #007dff;
+.navbar-brand {
+  background: #41B4E4;
+  color: white;
+  }
+
+.navbar {
+  background: #41B4E4;
+  color: white;
+  }
+
+.nav {
+  background: #41B4E4;
+  color: white;
+  a: white;
+  }
+
+a:link {
+  color: white;
+  background-color: #41b4e4;
+  text-decoration: none;
+}
+
+a:visited {
+  color: white;
+  background-color:  #41b4e4;
+  text-decoration: none;
+}
+
+a:hover {
+  color: white;
+  background-color:  #41b4e4;
+  text-decoration: underline;
+}
+
+a:active {
+  color: white;
+  background-color:  #41b4e4;
+  text-decoration: underline;
+}
+
+body {
+  background:#ffffff
 }
