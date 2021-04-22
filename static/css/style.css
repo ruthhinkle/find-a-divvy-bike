@@ -19,11 +19,59 @@ body,
 }
 
 .legend .low {
-  color: #225e6f;
+  color: #225E6F;
 }
+
 .legend .empty {
+  color: #D5361F;
+}
+
+.legend .full {
+  color: #41B4E4;
+}
+
+.navbar-brand {
+  background: #41B4E4;
+  color: white;
+  }
+
+.navbar {
+  background: #41B4E4;
+  color: white;
+  }
+
+.nav {
+  background: #41B4E4;
+  color: white;
+  a: white;
+  }
+
+a:link {
+  color: white;
+  background-color: #41b4e4;
+  text-decoration: none;
+}
+
+a:visited {
+  color: white;
+  background-color:  #41b4e4;
+  text-decoration: none;
+=======
   color: #d5361f;
 }
-.legend .full {
-  color: #41b4e4;
+
+a:hover {
+  color: white;
+  background-color:  #41b4e4;
+  text-decoration: underline;
+}
+
+a:active {
+  color: white;
+  background-color:  #41b4e4;
+  text-decoration: underline;
+}
+
+body {
+  background:#ffffff
 }
