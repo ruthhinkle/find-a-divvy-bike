@@ -19,21 +19,11 @@ body,
 }
 
 .legend .low {
-  color: #ec8a2e;
+  color: #225e6f;
 }
-
 .legend .empty {
-  color: #a0353a;
+  color: #d5361f;
 }
-
-.legend .coming-soon {
-  color: #f4ba48;
-}
-
 .legend .full {
-  color: #1b904f;
-}
-
-.legend .out-of-order {
-  color: #007dff;
+  color: #41b4e4;
 }
