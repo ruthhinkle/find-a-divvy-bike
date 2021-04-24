@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="static/css/style.css">
 
     <nav class="navbar navbar-expand-md fixed-top">
-
         <a class="navbar-brand" href="#"><img src="Icons_White/DIVVY_logo.svg" alt="DIVVY Logo" style="width:60px"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -20,7 +19,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="table.html">Table</a>
@@ -76,10 +75,7 @@
   <link rel="stylesheet" type="text/css" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <link rel="stylesheet" href="static/css/leaflet.extra-markers.min.css">
 
-  <!-- Marker cluster CSS -->
-  <link rel="stylesheet" type="text/css" href="https://unpkg.com/leaflet.markercluster@1.0.3/dist/MarkerCluster.css">
-  <link rel="stylesheet" type="text/css" href="https://unpkg.com/leaflet.markercluster@1.0.3/dist/MarkerCluster.Default.css">
-  
+
 
   <!-- Our CSS -->
   <link rel="stylesheet" type="text/css" href="static/css/style.css">
@@ -89,33 +85,94 @@
     <div class="container">
         <div class="row">
           <div class="col-12">
-              <a><h3 style="text-align: center; margin-top: 100px;">Plan Your Divvy Trip</h3></a>
-              <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Get Data!</a></p>
+              <a><h3 style="text-align: center; margin-top: 100px;"></h3></a>
+              <!-- <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Get Data!</a></p> -->
           </div>
         </div>
-        <div class="btn-group" role="group" aria-label="Basic outlined example">
-            <button type="button" class="btn btn-outline-primary">Electric Bikes</button>
-            <button type="button" class="btn btn-outline-primary">Classic Bikes</button>
+        <div class="table-stripped" >
+  
           </div>
-                
-                <div class="box-set" style="width:auto;height:600px;background-color: gray;">
-                    <div id="map-id"></div>
+          <div class="hero text-center">
+            <h1>Data Table</h1>
+            <p>Chicago Divvy Data</p>
+          </div>
+          <div class="container">
+            <div class="row margin-top-50">
+              <div class="col-md-2">
+                <aside class="filters">
+                  <div class="panel panel-default">
+                    <div class="panel-heading">Filter Search</div>
+                    <div class="panel-body">
+                      <form>
+                        <div class="form-group">
+                          <ul class="list-group" id="filters">
+                            <li class="filter list-group-item">
+                              <label for="date">Enter a Location</label>
+                              <input class="form-control" id="datetime" type="text" placeholder="Buckingham Fountain">
+                            </li>
+                            <li class="filter list-group-item">
+                              <label for="city">Enter a Longitude</label>
+                              <input class="form-control" id="city" type="text" placeholder="-87.__">
+                            </li>
+                            <li class="filter list-group-item">
+                              <label for="city">Enter a Latitude</label>
+                              <input class="form-control" id="state" type="text" placeholder="41.__">
+                            </li>
+                            <!-- <li class="filter list-group-item">
+                              <label for="city">Enter a Country</label>
+                              <input class="form-control" id="country" type="text" placeholder="us">
+                            </li>
+                            <li class="filter list-group-item">
+                              <label for="city">Enter a UFO Shape</label>
+                              <input class="form-control" id="shape" type="text" placeholder="triangle"> -->
+                            </li>
+                          </ul>
+                        </div>
+                        <button id="filter-btn" type="button" class="btn btn-default">Filter Table</button>
+                      </form>
+                    </div>
+                  </div>
+                </aside>
+              </div>
+              <div class="col-md-10">
+                <div id="table-area" class="">
+                  <table id="divvy-table" class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th class="table-head">Location</th>
+                        <th class="table-head">Payment Accepted</th>
+                        <th class="table-head">Latitude</th>
+                        <th class="table-head">Longitude</th>
+                        <th class="table-head">Shape</th>
+                        <th class="table-head">Duration</th>
+                        <th class="table-head">Comments</th>
+                      </tr>
+                    </thead>
+                    <tbody></tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <footer class="footer">
+                <!-- <div class="box-set" style="width:auto;height:600px;background-color: gray;"> -->
+                    <!-- <div id="map-id"></div> -->
 
                 <!-- Our JavaScript file -->
                 <!-- <script type="text/javascript" src="static/js/logic.js"></script> -->
                 <!-- use script below for 10 most popular routes -->
-                <script type="text/javascript" src="static/js/logic_cmd.js"></script>
-
+                <!-- <script type="text/javascript" src="static/js/logic_cmd.js"></script> -->
                     <!-- <h1 style="margin-top: 10px;"> holder for leaflet map</h1> -->
                     <!-- <figure class="box box-1">
                         <h3 style="text-align: center;">About</h3>
                     </figure>
                 </div>  
             </div>
-        </div>
-    
+        </div> -->
+       
     
     
     </div>
+    <script src="static/js/table_start.js"></script>
 </body>
 </html>
