@@ -4,15 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project 2 Open Sky</title>
-    
+  
+    <title> Plan Your Divvy Trip</title>
    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <link rel="stylesheet" href="static/css/style.css">
 
     <nav class="navbar navbar-expand-md fixed-top">
 
-        <a class="navbar-brand" href="#"><img src="Icons_White/DIVVY_logo.svg" alt="DIVVY Logo" style="width:60px"></a>
+        <a class="navbar-brand" href="#"><img src="Icons_White/DIVVY_logo.png" alt="DIVVY Logo" style="width:100px;height:29px"></a>
+
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -38,8 +39,10 @@
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
+
                 <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"> -->
                 <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
+
             </form>
         </div>
     </nav>  
@@ -80,7 +83,7 @@
   <link rel="stylesheet" type="text/css" href="https://unpkg.com/leaflet.markercluster@1.0.3/dist/MarkerCluster.css">
   <link rel="stylesheet" type="text/css" href="https://unpkg.com/leaflet.markercluster@1.0.3/dist/MarkerCluster.Default.css">
   
-
+<!---->
   <!-- Our CSS -->
   <link rel="stylesheet" type="text/css" href="static/css/style.css">
 </head>
@@ -89,14 +92,24 @@
     <div class="container">
         <div class="row">
           <div class="col-12">
+
               <a><h3 style="text-align: center; margin-top: 100px;">Plan Your Divvy Trip</h3></a>
               <!-- <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Get Data!</a></p> -->
+
           </div>
         </div>
-        <div class="btn-group" role="group" aria-label="Basic outlined example">
-            <button type="button" class="btn btn-outline-primary">Electric Bikes</button>
-            <button type="button" class="btn btn-outline-primary">Classic Bikes</button>
+        <div class="btn-group" onclick="bikeeToggle(this.value)" role="group" aria-label="Basic outlined example">
+            <button type="button" value="ebikes" class="btn btn-outline-primary">Electric Bikes</button>
+            <!-- <button type="button" value="classic" class="btn btn-outline-primary">Classic Bikes</button> -->
           </div>
+        <div class="btn-group" onclick="bikecToggle(this.value)" role="group" aria-label="Basic outlined example">
+            <!-- <button type="button" value="ebikes" class="btn btn-outline-primary">Electric Bikes</button> -->
+            <button type="button" value="classic" class="btn btn-outline-primary">Classic Bikes</button>
+          </div>  
+        <div class="btn-group" onclick="bikeaToggle(this.value)" role="group" aria-label="Basic outlined example">
+            <!-- <button type="button" value="ebikes" class="btn btn-outline-primary">Electric Bikes</button> -->
+            <button type="button" value="all" class="btn btn-outline-primary">All Bikes</button>
+          </div>    
                 
                 <div class="box-set" style="width:auto;height:600px;background-color: gray;">
                     <div id="map-id"></div>

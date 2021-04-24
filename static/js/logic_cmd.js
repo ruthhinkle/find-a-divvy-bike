@@ -119,7 +119,7 @@ d3.json("https://gbfs.divvybikes.com/gbfs/en/station_information.json").then(fun
       newMarker.addTo(layers[stationStatusCode]);
 
       // Bind a popup to the marker that will  display on being clicked. This will be rendered as HTML.
-      newMarker.bindPopup(station.name + "<br> Capacity: " + station.capacity + "<br>" + station.num_bikes_available + " Bikes Available");
+      newMarker.bindPopup("<h5>" + station.name + "</h5>" + "<h6><br> Capacity: " + station.capacity + "<br>" + station.num_bikes_available + " Bikes Available </h6>");
     }
 
     // Call the updateLegend function, which will update the legend!
