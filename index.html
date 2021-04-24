@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project Two -  Plan Your Divvy Trip</title>
-    
+  
+    <title> Plan Your Divvy Trip</title>
    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <link rel="stylesheet" href="static/css/style.css">
@@ -94,10 +94,18 @@
               <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Get Data!</a></p>
           </div>
         </div>
-        <div class="btn-group" role="group" aria-label="Basic outlined example">
-            <button type="button" class="btn btn-outline-primary">Electric Bikes</button>
-            <button type="button" class="btn btn-outline-primary">Classic Bikes</button>
+        <div class="btn-group" onclick="bikeeToggle(this.value)" role="group" aria-label="Basic outlined example">
+            <button type="button" value="ebikes" class="btn btn-outline-primary">Electric Bikes</button>
+            <!-- <button type="button" value="classic" class="btn btn-outline-primary">Classic Bikes</button> -->
           </div>
+        <div class="btn-group" onclick="bikecToggle(this.value)" role="group" aria-label="Basic outlined example">
+            <!-- <button type="button" value="ebikes" class="btn btn-outline-primary">Electric Bikes</button> -->
+            <button type="button" value="classic" class="btn btn-outline-primary">Classic Bikes</button>
+          </div>  
+        <div class="btn-group" onclick="bikeaToggle(this.value)" role="group" aria-label="Basic outlined example">
+            <!-- <button type="button" value="ebikes" class="btn btn-outline-primary">Electric Bikes</button> -->
+            <button type="button" value="all" class="btn btn-outline-primary">All Bikes</button>
+          </div>    
                 
                 <div class="box-set" style="width:auto;height:600px;background-color: gray;">
                     <div id="map-id"></div>
