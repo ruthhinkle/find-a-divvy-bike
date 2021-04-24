@@ -21,7 +21,7 @@ d3.json(url).then(function(divvyData) {
     var tbody = d3.select("tbody");
     var allStations = divvyData.data
     var stationArray = allStations.stations
-    console.log(stationArray)
+    // console.log(stationArray)
 
     function buildTable(stationArray) {
 
@@ -34,6 +34,7 @@ d3.json(url).then(function(divvyData) {
             // Step 3: Use `Object.entries` to pull each sightings report value
             Object.entries(stations).forEach(function([key, value]) {
                 // Step 4: Use d3 to append 1 cell per sightings report value
+                console.log(key, value)
                 //(datetime, city, state, country, shape, durationMinutes, comments)   
                 var cell = row.append("td");
                 // Step 5: Use d3 to update each cell's text with sightings values
