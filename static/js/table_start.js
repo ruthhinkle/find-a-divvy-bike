@@ -29,6 +29,7 @@ d3.json(url).then(function(divvyData) {
 
         var columns = [
             "name",
+            "capacity",
             "rental_methods",
             "lat",
             "lon"
@@ -49,4 +50,38 @@ d3.json(url).then(function(divvyData) {
             });        
     }
     buildTable(stationArray)
-});    
+
+    function clickButton() {
+        var name = d3.select("#place").property("value");
+        var capacity = d3.select("#capacity").property("value");
+        var stationType = d3.select("#station-type").property("value");
+
+        var nameData = stationArray.filter(stations => stations.name === name);
+        var capacityData = stationArray.filter(stations => stations.capacity === capacity);
+        var typeData = stationArray.filter(stations => stations.station_type === stationType);
+        var combinedData = stationArray.filter(stations => stations.name === name, stations => stations.capacity === capacity, stations => stations.station_type === stationType);
+
+        let response = {
+            nameData, capacityData, typeData, combinedData
+        }
+    
+        if (response.combinedData.length !== 0) {
+            buildTable(combinedData);
+        }
+            else if (response.combinedData.length === 0 && ((response.nameData.length !== 0 || response.typeData.length !== 0 || response.capacityData.length !== 0))){
+                buildTable(capacityData) || buildTable(typeData) || buildTable(nameData);
+        
+            }
+            else {
+                tbody.html("");
+                tbody.append("tr").append("td").text("No results found!"); 
+            }
+    };
+        // buildTable(nameData);
+
+    // on click
+    d3.selectAll("#filter-btn").on("click", clickButton);   
+});
+     
+
+

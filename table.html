@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="static/css/style.css">
 
     <nav class="navbar navbar-expand-md fixed-top">
-        <a class="navbar-brand" href="#"><img src="Icons_White/DIVVY_logo.svg" alt="DIVVY Logo" style="width:60px"></a>
+      <a class="navbar-brand" href="#"><img src="Icons_White/DIVVY_logo.png" alt="DIVVY Logo" style="width:100px;height:29px"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -37,8 +37,8 @@
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
             </form>
         </div>
     </nav>  
@@ -108,15 +108,15 @@
                           <ul class="list-group" id="filters">
                             <li class="filter list-group-item">
                               <label for="date">Enter a Location</label>
-                              <input class="form-control" id="datetime" type="text" placeholder="Buckingham Fountain">
+                              <input class="form-control" id="place" type="text" placeholder="Buckingham Fountain">
                             </li>
                             <li class="filter list-group-item">
-                              <label for="city">Enter a Longitude</label>
-                              <input class="form-control" id="city" type="text" placeholder="-87.__">
+                              <label for="city">Enter a Capacity</label>
+                              <input class="form-control" id="capacity" type="text" placeholder="10">
                             </li>
                             <li class="filter list-group-item">
-                              <label for="city">Enter a Latitude</label>
-                              <input class="form-control" id="state" type="text" placeholder="41.__">
+                              <label for="city">Enter a Station Type</label>
+                              <input class="form-control" id="station-type" type="text" placeholder="classic">
                             </li>
                             <!-- <li class="filter list-group-item">
                               <label for="city">Enter a Country</label>
@@ -140,7 +140,8 @@
                     <thead>
                       <tr>
                         <th class="table-head">Location</th>
-                        <th class="table-head">Payment Accepted</th>
+                        <th class="table-head">Capacity</th>
+                        <th class="table-head">Station Type</th>
                         <th class="table-head">Latitude</th>
                         <th class="table-head">Longitude</th>
                       </tr>
