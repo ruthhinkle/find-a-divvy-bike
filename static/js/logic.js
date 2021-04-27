@@ -89,6 +89,9 @@
       // Initialize stationStatusCode, which will be used as a key to access the appropriate layers, icons, and station count for the layer group.
       var stationStatusCode;
 
+      // cmd - add markercluster later
+      var groupedMarkers = L.markerClusterGroup();
+    
       // Loop through the stations (they're the same size and have partially matching data).
       for (var i = 0; i < stationInfo.length; i++) {
 
@@ -119,6 +122,7 @@
 
         // // Add the new marker to the appropriate layer.
         newMarker.addTo(layers[stationStatusCode]);
+        groupedMarkers.addLayer(newMarker)
 
         // Bind a popup to the marker that will  display on being clicked. This will be rendered as HTML.
         newMarker.bindPopup("<h5>" + station.name + "</h5>" + "<h6><br> Capacity: " + station.capacity + "<br>" + station.num_bikes_available + " Bikes Available </h6>");
@@ -126,8 +130,11 @@
 
       // Call the updateLegend function, which will update the legend!
       updateLegend(updatedAt, stationCount);
+      // cmd added
+      map.addLayer(groupedMarkers)
     });
   });
+ 
 
   // Update the legend's innerHTML with the last updated time and station count.
   function updateLegend(time, stationCount) {
