@@ -89,12 +89,12 @@
       // Initialize stationStatusCode, which will be used as a key to access the appropriate layers, icons, and station count for the layer group.
       var stationStatusCode;
 
-      // cmd - add markercluster later
+      // Add a markerClusterGroup layer
       var groupedMarkers = L.markerClusterGroup();
     
       // Loop through the stations (they're the same size and have partially matching data).
       for (var i = 0; i < stationInfo.length; i++) {
-
+        
         // Create a new station object with properties of both station objects.
         var station = Object.assign({}, stationInfo[i], stationStatus[i]);
 
@@ -120,17 +120,17 @@
           icon: icons[stationStatusCode]
         });
 
-        // // Add the new marker to the appropriate layer.
-        newMarker.addTo(layers[stationStatusCode]);
+        // Add the new marker to the cluster layer group
         groupedMarkers.addLayer(newMarker)
-
+        
         // Bind a popup to the marker that will  display on being clicked. This will be rendered as HTML.
         newMarker.bindPopup("<h5>" + station.name + "</h5>" + "<h6><br> Capacity: " + station.capacity + "<br>" + station.num_bikes_available + " Bikes Available </h6>");
       }
 
       // Call the updateLegend function, which will update the legend!
       updateLegend(updatedAt, stationCount);
-      // cmd added
+
+      // Add the group marker layer to the map
       map.addLayer(groupedMarkers)
     });
   });
@@ -149,6 +149,7 @@
 
 //ebikes toggling
 function bikeeToggle(bikeType) {
+  
   //destroy previous layers
   map.eachLayer(function (layer) {
     map.removeLayer(layer);
@@ -160,6 +161,7 @@ function bikeeToggle(bikeType) {
 
   //create new layer
   var ebikelayer = new L.LayerGroup()
+  
   //create empty layers group
   d3.json("https://gbfs.divvybikes.com/gbfs/en/station_information.json").then(function (infoRes) {
 
@@ -167,6 +169,9 @@ function bikeeToggle(bikeType) {
       var updatedAt = infoRes.last_updated;
       var stationStatus = statusRes.data.stations;
       var stationInfo = infoRes.data.stations;
+
+    // Add marker cluster group layer
+    var groupedMarkers = L.markerClusterGroup();
 
       // Loop through the stations (they're the same size and have partially matching data).
       for (var i = 0; i < stationInfo.length; i++) {
@@ -179,16 +184,21 @@ function bikeeToggle(bikeType) {
           // Create a new marker with the appropriate icon and coordinates.
           var newMarker = L.marker([station.lat, station.lon])
             .bindPopup("<h5>" + station.name + "</h5>" + "<h6><br> Capacity: " + station.capacity + "<br>" + station.num_ebikes_available + " eBikes Available </h6>")
-          newMarker.addTo(ebikelayer);
+            
+            // Add new marker to the e-bike layer and group under marker cluster layer
+            newMarker.addTo(ebikelayer);
+            groupedMarkers.addLayer(newMarker);
         }
       }
-      ebikelayer.addTo(map)
+      // Add markers and clusters to the map
+      map.addLayer(groupedMarkers)
     });
   })
 };
 
 //Classic bikes toggling
 function bikecToggle(bikeType) {
+  
   //destroy previous layers
   map.eachLayer(function (layer) {
     map.removeLayer(layer);
@@ -207,6 +217,9 @@ function bikecToggle(bikeType) {
       var stationStatus = statusRes.data.stations;
       var stationInfo = infoRes.data.stations;
 
+      // Add a marker cluster group layer
+      var groupedMarkers = L.markerClusterGroup();
+
       // Loop through the stations (they're the same size and have partially matching data).
       for (var i = 0; i < stationInfo.length; i++) {
 
@@ -217,14 +230,18 @@ function bikecToggle(bikeType) {
 
         // If a station has no available ebikes, it's empty.
         if (num_classic_bikes_available) {
+          
           // Create a new marker with the appropriate icon and coordinates.
           var newMarker = L.marker([station.lat, station.lon])
             .bindPopup("<h5>" + station.name + "</h5>" + "<h6><br> Capacity: " + station.capacity + "<br>" + num_classic_bikes_available + " Classic Bikes Available </h6>")
-          newMarker.addTo(classicbikelayer);
+          
+            // Add new marker to the classic bike layer and group under marker cluster layer
+            newMarker.addTo(classicbikelayer);
+            groupedMarkers.addLayer(newMarker);
         }
-      } classicbikelayer.addTo(map)
+      } 
+      // classicbikelayer.addTo(map)
+      map.addLayer(groupedMarkers)
     });
-
-
   })
 };
