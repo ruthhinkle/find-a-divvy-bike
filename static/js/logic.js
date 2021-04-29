@@ -183,7 +183,7 @@ function fillStations(stationStatus, stationInfo, updatedAt, bikeEbikes) {
       groupedMarkers.addLayer(newMarker)
 
       // Bind a popup to the marker that will  display on being clicked. This will be rendered as HTML.
-      newMarker.bindPopup("<h5>" + station.name + "</h5>" + "<h6><br> Capacity: " + station.capacity + "<br>" + station.num_bikes_available + " Bikes Available </h6>");
+      newMarker.bindPopup("<h5>" + station.name + "</h5>" + "<h6><br> Capacity: " + station.capacity + "<br>" + station.num_ebikes_available + " eBikes Available </h6>");
     }
 
     // Call the updateLegend function, which will update the legend!
@@ -231,7 +231,7 @@ function fillStations(stationStatus, stationInfo, updatedAt, bikeEbikes) {
       groupedMarkers.addLayer(newMarker)
 
       // Bind a popup to the marker that will  display on being clicked. This will be rendered as HTML.
-      newMarker.bindPopup("<h5>" + station.name + "</h5>" + "<h6><br> Capacity: " + station.capacity + "<br>" + station.num_bikes_available + " Bikes Available </h6>");
+      newMarker.bindPopup("<h5>" + station.name + "</h5>" + "<h6><br> Capacity: " + station.capacity + "<br>" + num_classic_bikes_available + " Classic Bikes Available </h6>");
     }
 
     // Call the updateLegend function, which will update the legend!
