@@ -10,6 +10,8 @@ var layers = {
   EMPTY: new L.LayerGroup(),
   LOW: new L.LayerGroup(),
   NORMAL: new L.LayerGroup(),
+  LANDMARKS: new L.LayerGroup(),
+  ROUTES: new L.LayerGroup(),
 };
 
 // Create the map with our layers.
@@ -20,6 +22,8 @@ var map = L.map("map-id", {
     layers.EMPTY,
     layers.LOW,
     layers.NORMAL,
+    layers.LANDMARKS,
+    layers.ROUTES,
   ]
 });
 
@@ -28,12 +32,14 @@ streetmap.addTo(map);
 
 // Create an overlays object to add to the layer control.
 var overlays = {
-  "Empty Stations": layers.EMPTY,
-  "Low Stations": layers.LOW,
-  "Full Stations": layers.NORMAL,
+  // "Empty Stations": layers.EMPTY,
+  // "Low Stations": layers.LOW,
+  // "Full Stations": layers.NORMAL,
+  "Landmarks": layers.LANDMARKS,
+  "Routes": layers.ROUTES,
 };
 
-// Create a control for our layers, and add our overlays to it.
+// // Create a control for our layers, and add our overlays to it.
 L.control.layers(null, overlays).addTo(map);
 
 // Create a legend to display information about our map.
@@ -83,7 +89,6 @@ function updateLegend(time, stationCount) {
     "<p><em>Updated: " + moment.unix(time).format("h:mm:ss A") + "</em></p>"
   ].join("");
 }
-
 
 // Function to populate the map based on the toggle button options
 function fillStations(stationStatus, stationInfo, updatedAt, bikeEbikes) {
@@ -135,7 +140,9 @@ function fillStations(stationStatus, stationInfo, updatedAt, bikeEbikes) {
       });
 
       // Add the new marker to the cluster layer group
+      // newMarker.addTo(layers[stationStatusCode]);
       groupedMarkers.addLayer(newMarker)
+
 
       // Bind a popup to the marker that will  display on being clicked. This will be rendered as HTML.
       newMarker.bindPopup("<h5>" + station.name + "</h5>" + "<h6><br> Capacity: " + station.capacity + "<br>" + station.num_bikes_available + " Bikes Available </h6>");
@@ -195,7 +202,7 @@ function fillStations(stationStatus, stationInfo, updatedAt, bikeEbikes) {
 
   // Conditional for "Classic Bikes" toggle button
   else if (bikeEbikes === "classicbikes") {
-    
+
     // Loop for classic bikes
     for (var i = 0; i < stationInfo.length; i++) {
 
@@ -263,6 +270,13 @@ d3.json("https://gbfs.divvybikes.com/gbfs/en/station_information.json").then(fun
 
 
 // CODE FOR E-BIKE TOGGLE BUTTON
+// // Initialize all the LayerGroups that we'll use.
+// var layers = {
+//   EMPTY: new L.LayerGroup(),
+//   LOW: new L.LayerGroup(),
+//   NORMAL: new L.LayerGroup(),
+// };
+
 
 //ebikes toggling
 function bikeeToggle(bikeType) {
@@ -270,6 +284,7 @@ function bikeeToggle(bikeType) {
   //destroy previous layers
   map.eachLayer(function (layer) {
     map.removeLayer(layer);
+    map.removeLayer(layers);
   });
   var streetmap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
