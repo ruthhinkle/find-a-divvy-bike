@@ -106,44 +106,31 @@ d3.json(url).then(function(divvyData) {
 
     function clickButton() {
         // console.log("hello world")
-        var name = d3.select("#place").property("value");
+        var name = d3.select("#place").property("value").toLowerCase();
         var capacity = d3.select("#capacity").property("value");
         
         var nameArray = stationArray.map(station => station.name)
         var filtered_names = filterArray(nameArray, name);
         // console.log(filtered_names)
 
-        var nameData = stationArray.filter(stations => filtered_names.includes(stations.name));
-        var capacityData = stationArray.filter(stations => stations.capacity >= capacity);
-        var combinedData = stationArray.filter(stations => filtered_names.includes(stations.name), stations => stations.capacity >= capacity);
-        console.log(capacity)
+        // var nameData = stationArray.filter(stations => filtered_names.includes(stations.name));
+        // var capacityData = stationArray.filter(stations => stations.capacity >= capacity);
+        var combinedData = stationArray.filter(stations => (stations && stations.name || '').toLowerCase().includes(name)).filter(stations => stations.capacity >= capacity);
+        console.log(name, capacity)
         let response = {
-            nameData, capacityData, combinedData
+             combinedData
         }
-    
+        debugger
         if (response.combinedData.length !== 0) {
             buildTable(combinedData)
-            console.log(response.combinedData.length, combinedData);
+            console.log(response.combinedData.length, "combined Data");
         }
-            else if (response.nameData.length !== 0) {
-                buildTable(nameData)
-                console.log("name data");
-            }
 
-            else if  (response.capacityData.length !== 0) {
-                buildTable(capacityData)
-                console.log("capacity data");
-            }
-            // else if (response.combinedData.length === 0 && ((response.nameData.length !== 0 || response.capacityData.length !== 0))){
-            //     buildTable(capacityData) || buildTable(nameData);
-        
-            // }
             else {
                 tbody.html("");
                 tbody.append("tr").append("td").text("No results found!"); 
             }
     };
-        // buildTable(nameData);
 
     // on click
     d3.selectAll("#filter-btn").on("click", clickButton);   
