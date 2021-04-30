@@ -338,7 +338,7 @@ function bikecToggle(bikeType) {
 //Landmarks toggling
 var landmarkIcon = L.Icon.extend({
   options: {
-      shadowUrl: 'markers_shadow.png',
+      shadowUrl: '../img/markers_shadow.png',
       iconSize:     [29, 40],
       shadowSize:   [35, 16],
       iconAnchor:   [22, 94],
@@ -347,20 +347,20 @@ var landmarkIcon = L.Icon.extend({
   }
 });
 
-var instituteIcon = new landmarkIcon({iconUrl: 'whiteIcon_institute.png'}),
-    fountainIcon = new landmarkIcon({iconUrl: 'whiteIcon_fountain.png'}),
-    theaterIcon = new landmarkIcon({iconUrl: 'whiteIcon_theater.png'});
-    baseballIcon = new landmarkIcon({iconUrl: 'whiteIcon_baseball.png'});
-    basketballIcon = new landmarkIcon({iconUrl: 'whiteIcon_basketball.png'});
-    chinatownIcon = new landmarkIcon({iconUrl: 'whiteIcon_chinatown.png'});
-    cloudgateIcon = new landmarkIcon({iconUrl: 'whiteIcon_cloudgate.png'});
-    conservatoryIcon = new landmarkIcon({iconUrl: 'whiteIcon_conservatory.png'});
-    downtownIcon = new landmarkIcon({iconUrl: 'whiteIcon_downtown.png'});
-    footballIcon = new landmarkIcon({iconUrl: 'whiteIcon_football.png'});
-    marinaIcon = new landmarkIcon({iconUrl: 'whiteIcon_marina.png'});
-    pequodsIcon = new landmarkIcon({iconUrl: 'whiteIcon_pequods.png'});
-    navypierIcon = new landmarkIcon({iconUrl: 'whiteIcon_navypier.png'});
-    zooIcon = new landmarkIcon({iconUrl: 'whiteIcon_zoo.png'});
+var instituteIcon = new landmarkIcon({iconUrl: '../img/whiteIcon_institute.png'}),
+    fountainIcon = new landmarkIcon({iconUrl: '../img/whiteIcon_fountain.png'}),
+    theaterIcon = new landmarkIcon({iconUrl: '../img/whiteIcon_theater.png'});
+    baseballIcon = new landmarkIcon({iconUrl: '../img/whiteIcon_baseball.png'});
+    basketballIcon = new landmarkIcon({iconUrl: '../img/whiteIcon_basketball.png'});
+    chinatownIcon = new landmarkIcon({iconUrl: '../img/whiteIcon_chinatown.png'});
+    cloudgateIcon = new landmarkIcon({iconUrl: '../img/whiteIcon_cloudgate.png'});
+    conservatoryIcon = new landmarkIcon({iconUrl: '../img/whiteIcon_conservatory.png'});
+    downtownIcon = new landmarkIcon({iconUrl: '../img/whiteIcon_downtown.png'});
+    footballIcon = new landmarkIcon({iconUrl: '../img/whiteIcon_football.png'});
+    marinaIcon = new landmarkIcon({iconUrl: '../img/whiteIcon_marina.png'});
+    pequodsIcon = new landmarkIcon({iconUrl: '../img/whiteIcon_pequods.png'});
+    navypierIcon = new landmarkIcon({iconUrl: '../img/whiteIcon_navypier.png'});
+    zooIcon = new landmarkIcon({iconUrl: '../img/whiteIcon_zoo.png'});
 
 L.marker([41.8796, -87.6237], {icon: instituteIcon}).addTo(map).bindPopup("Art Institute");
 L.marker([41.8759, -87.6189], {icon: fountainIcon}).addTo(map).bindPopup("Buckingham Fountain");
