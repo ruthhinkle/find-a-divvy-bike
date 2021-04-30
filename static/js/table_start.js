@@ -35,6 +35,9 @@ d3.json(url).then(function(divvyData) {
             "lon"
         ];
 
+        stationArray = stationArray.sort(function(a, b){ return b.capacity - a.capacity});
+
+        // console.log(stationArray)
         // Step 1: Loop Through `data` for each sighting.
            
             // Step 2: Use d3 to append one table row `tr` for each sightings report object
@@ -51,27 +54,90 @@ d3.json(url).then(function(divvyData) {
     }
     buildTable(stationArray)
 
+// ====
+    function escapeRegExp(str) {
+        return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    }
+    
+    function convertWildcardStringToRegExp(expression) {
+        var terms = expression.split('*');
+    
+        var trailingWildcard = false;
+    
+        var expr = '';
+        for (var i = 0; i < terms.length; i++) {
+            if (terms[i]) {
+                if (i > 0 && terms[i - 1]) {
+                    expr += '.*';
+                }
+                trailingWildcard = false;
+                expr += escapeRegExp(terms[i]);
+            } else {
+                trailingWildcard = true;
+                expr += '.*';
+            }
+        }
+    
+        if (!trailingWildcard) {
+            expr += '.*';
+        }
+    
+        return new RegExp('^' + expr + '$', 'i');
+    }
+    
+    // // ===================================================================================
+    // // Testing...
+    
+    // var states = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'];
+    
+    // var filter = '*kans';
+    
+    function filterArray(array, expression) {
+        var regex = convertWildcardStringToRegExp(expression);
+        //console.log('RegExp: ' + regex);
+        return array.filter(function(item) {
+            return regex.test(item);
+        });
+    }
+    
+    // console.log(filterArray(states, filter));
+
+// ====
+
     function clickButton() {
+        // console.log("hello world")
         var name = d3.select("#place").property("value");
         var capacity = d3.select("#capacity").property("value");
-        var stationType = d3.select("#station-type").property("value");
+        
+        var nameArray = stationArray.map(station => station.name)
+        var filtered_names = filterArray(nameArray, name);
+        // console.log(filtered_names)
 
-        var nameData = stationArray.filter(stations => stations.name === name);
-        var capacityData = stationArray.filter(stations => stations.capacity === capacity);
-        var typeData = stationArray.filter(stations => stations.station_type === stationType);
-        var combinedData = stationArray.filter(stations => stations.name === name, stations => stations.capacity === capacity, stations => stations.station_type === stationType);
-
+        var nameData = stationArray.filter(stations => filtered_names.includes(stations.name));
+        var capacityData = stationArray.filter(stations => stations.capacity >= capacity);
+        var combinedData = stationArray.filter(stations => filtered_names.includes(stations.name), stations => stations.capacity >= capacity);
+        console.log(capacity)
         let response = {
-            nameData, capacityData, typeData, combinedData
+            nameData, capacityData, combinedData
         }
     
         if (response.combinedData.length !== 0) {
-            buildTable(combinedData);
+            buildTable(combinedData)
+            console.log(response.combinedData.length, combinedData);
         }
-            else if (response.combinedData.length === 0 && ((response.nameData.length !== 0 || response.typeData.length !== 0 || response.capacityData.length !== 0))){
-                buildTable(capacityData) || buildTable(typeData) || buildTable(nameData);
-        
+            else if (response.nameData.length !== 0) {
+                buildTable(nameData)
+                console.log("name data");
             }
+
+            else if  (response.capacityData.length !== 0) {
+                buildTable(capacityData)
+                console.log("capacity data");
+            }
+            // else if (response.combinedData.length === 0 && ((response.nameData.length !== 0 || response.capacityData.length !== 0))){
+            //     buildTable(capacityData) || buildTable(nameData);
+        
+            // }
             else {
                 tbody.html("");
                 tbody.append("tr").append("td").text("No results found!"); 
