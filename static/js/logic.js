@@ -376,7 +376,7 @@ L.marker([41.8627, -87.6166], {icon: footballIcon}).addTo(map).bindPopup("Soldie
 L.marker([41.8881, -87.6290], {icon: marinaIcon}).addTo(map).bindPopup("Marina City");
 L.marker([41.9220, -87.6645], {icon: pequodsIcon}).addTo(map).bindPopup("Pequods Pizza");
 L.marker([41.8919, -87.6100], {icon: navypierIcon}).addTo(map).bindPopup("Navy Pier");
-L.marker([41.9217, -87.6336], {icon: zooIcon}).addTo(map).bindPopup("Licoln Park Zoo");
+L.marker([41.9217, -87.6336], {icon: zooIcon}).addTo(map).bindPopup("Lincoln Park Zoo");
 
 
 
