@@ -12,14 +12,18 @@ Check out the [demo site](https://ruthhinkle.github.io/project-2/index.html) sit
   Stations are color-coded on the map to indicate how many bikes are availabe. Look first for Full Stations where you'll have your pick of bike. Low stations have less than 5 bikes available, so avoid them unless your party is small and you're very close! You can't pick up bikes at Empty Stations, but you can drop bikes off there when you are done!
 </details>
 
-<details> <summary markdown="span"><strong> 🗽 Visit Popular Destinations</strong></summary>
+<details> <summary markdown="span"><strong> 🗽 Visit Popular Landmarks</strong></summary>
     Keep an eye out for popular landmarks and even restaurants on the map! Each destination has a unique icon so you can find it on the map. 
 </details>
 
-## Installation
+<details> <summary markdown="span"><strong>🔎 Table View</strong></summary>
+    Navigate to the table tab to search for a particular location to see the station capacity. 
+</details>
+
 
 ## Future Upgrades
 * Add information about each destination when you click on the icon. 
+* Reconcile the conflict between MarkerClusterGroups and layer toggles for Full, Low, and Empty stations
 
 ## 📁 Repository Contents
 
