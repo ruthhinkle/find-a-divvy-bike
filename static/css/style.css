@@ -47,17 +47,13 @@ body,
   }
 
 a:link {
-  color: white;
-  background-color: #41b4e4;
+  color: #41b4e4;
   text-decoration: none;
 }
 
 a:visited {
-  color: white;
   background-color:  #41b4e4;
   text-decoration: none;
-=======
-  color: #d5361f;
 }
 
 a:hover {
@@ -81,4 +77,15 @@ body {
   color:  #ffffff;
   background: #41b4e4;
 
+}
+
+.br {
+  content: " ";
+  display: block;
+  margin: 50px;
+}
+
+.footerpadding {
+  background-color: #79b3cc;
+  margin: 20px
 }
