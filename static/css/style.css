@@ -82,3 +82,14 @@ body {
   background: #41b4e4;
 
 }
+
+.br {
+  content: " ";
+  display: block;
+  margin: 50px;
+}
+
+.footerpadding {
+  background-color: #79b3cc;
+  margin: 20px
+}
