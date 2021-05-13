@@ -36,7 +36,7 @@ var overlays = {
   // "Low Stations": layers.LOW,
   // "Full Stations": layers.NORMAL,
   "Landmarks": layers.LANDMARKS,
-  "Routes": layers.ROUTES,
+  "Popular Routes": layers.ROUTES,
 };
 
 // // Create a control for our layers, and add our overlays to it.
@@ -250,6 +250,123 @@ function fillStations(stationStatus, stationInfo, updatedAt, bikeEbikes) {
 
 }
 
+function addAntPaths() {
+  let antPolyline1 = L.polyline.antPath(lineOne, {
+    color: "red",
+    weight: 5
+  })
+  antPolyline1.addTo(layers.ROUTES)
+
+  let antPolyline2 = L.polyline.antPath(lineTwo, {
+    color: "green",
+    weight: 3
+
+  })
+  antPolyline2.addTo(layers.ROUTES)
+
+  let antPolyline3 = L.polyline.antPath(lineThree, {
+    color: "black",
+    weight: 3
+  })
+  antPolyline3.addTo(layers.ROUTES)
+
+  let antPolyline4 = L.polyline.antPath(lineFour, {
+    color: "purple",
+    weight: 3
+  })
+  antPolyline4.addTo(layers.ROUTES)
+
+  let antPolyline5 = L.polyline.antPath(lineFive, {
+    color: "black",
+    weight: 3,
+    pulseColor: "gold"
+  })
+  antPolyline5.addTo(layers.ROUTES)
+
+  let antPolyline6 = L.polyline.antPath(lineSix, {
+    color: "black",
+    weight: 3,
+    pulseColor: "red"
+  })
+  antPolyline6.addTo(layers.ROUTES)
+
+  let antPolyline8 = L.polyline.antPath(lineEight, {
+    color: "teal",
+    weight: 3,
+    pulseColor: "black"
+  })
+  antPolyline8.addTo(layers.ROUTES)
+
+  let antPolyline9 = L.polyline.antPath(lineNine, {
+    color: "brown",
+    weight: 3,
+    pulseColor: "lightgreen"
+  })
+  antPolyline9.addTo(layers.ROUTES)
+
+  let antPolyline10 = L.polyline.antPath(lineTen, {
+    color: "aqua",
+    weight: 3,
+    pulseColor: "blue"
+  })
+  antPolyline10.addTo(layers.ROUTES)
+}
+
+
+// CODE FOR E-BIKE TOGGLE BUTTON
+// // Initialize all the LayerGroups that we'll use.
+// var layers = {
+//   EMPTY: new L.LayerGroup(),
+//   LOW: new L.LayerGroup(),
+//   NORMAL: new L.LayerGroup(),
+// };
+
+//Landmarks toggling
+function addLandmarks() {
+  var landmarkIcon = L.Icon.extend({
+    options: {
+      shadowUrl: 'static/img/markers_shadow.png',
+      iconSize: [29, 40],
+      shadowSize: [35, 16],
+      iconAnchor: [22, 94],
+      shadowAnchor: [20, 64],
+      popupAnchor: [-3, -76]
+    }
+  });
+
+  var instituteIcon = new landmarkIcon({ iconUrl: 'static/img/whiteIcon_institute.png' }),
+    fountainIcon = new landmarkIcon({ iconUrl: 'static/img/whiteIcon_fountain.png' }),
+    theaterIcon = new landmarkIcon({ iconUrl: 'static/img/whiteIcon_theater.png' });
+  baseballIcon = new landmarkIcon({ iconUrl: 'static/img/whiteIcon_baseball.png' });
+  basketballIcon = new landmarkIcon({ iconUrl: 'static/img/whiteIcon_basketball.png' });
+  chinatownIcon = new landmarkIcon({ iconUrl: 'static/img/whiteIcon_chinatown.png' });
+  cloudgateIcon = new landmarkIcon({ iconUrl: 'static/img/whiteIcon_cloudgate.png' });
+  conservatoryIcon = new landmarkIcon({ iconUrl: 'static/img/whiteIcon_conservatory.png' });
+  downtownIcon = new landmarkIcon({ iconUrl: 'static/img/whiteIcon_downtown.png' });
+  footballIcon = new landmarkIcon({ iconUrl: 'static/img/whiteIcon_football.png' });
+  marinaIcon = new landmarkIcon({ iconUrl: 'static/img/whiteIcon_marina.png' });
+  pequodsIcon = new landmarkIcon({ iconUrl: 'static/img/whiteIcon_pequods.png' });
+  navypierIcon = new landmarkIcon({ iconUrl: 'static/img/whiteIcon_navypier.png' });
+  zooIcon = new landmarkIcon({ iconUrl: 'static/img/whiteIcon_zoo.png' });
+
+  L.marker([41.8796, -87.6237], { icon: instituteIcon }).addTo(layers.LANDMARKS).bindPopup("The Art Institute");
+  L.marker([41.8759, -87.6189], { icon: fountainIcon }).addTo(layers.LANDMARKS).bindPopup("Buckingham Fountain");
+  L.marker([41.8855, -87.6274], { icon: theaterIcon }).addTo(layers.LANDMARKS).bindPopup("Chicago Theater");
+  L.marker([41.9486, -87.6553], { icon: baseballIcon }).addTo(layers.LANDMARKS).bindPopup("Wrigley Field");
+  L.marker([41.8301, -87.6337], { icon: baseballIcon }).addTo(layers.LANDMARKS).bindPopup("Guaranteed Rate Field");
+  L.marker([41.8808, -87.6742], { icon: basketballIcon }).addTo(layers.LANDMARKS).bindPopup("United Center");
+  L.marker([41.8527, -87.6320], { icon: chinatownIcon }).addTo(layers.LANDMARKS).bindPopup("China Town");
+  L.marker([41.8828, -87.6233], { icon: cloudgateIcon }).addTo(layers.LANDMARKS).bindPopup("Cloud Gate (a.k.a. 'The Bean')");
+  L.marker([41.8864, -87.7172], { icon: conservatoryIcon }).addTo(layers.LANDMARKS).bindPopup("Garfield Park Conservatory");
+  L.marker([41.8780, -87.6315], { icon: downtownIcon }).addTo(layers.LANDMARKS).bindPopup("The Loop");
+  L.marker([41.8627, -87.6166], { icon: footballIcon }).addTo(layers.LANDMARKS).bindPopup("Soldier Field");
+  L.marker([41.8881, -87.6290], { icon: marinaIcon }).addTo(layers.LANDMARKS).bindPopup("Marina City");
+  L.marker([41.9220, -87.6645], { icon: pequodsIcon }).addTo(layers.LANDMARKS).bindPopup("Pequods Pizza");
+  L.marker([41.8919, -87.6100], { icon: navypierIcon }).addTo(layers.LANDMARKS).bindPopup("Navy Pier");
+  L.marker([41.9217, -87.6336], { icon: zooIcon }).addTo(layers.LANDMARKS).bindPopup("Lincoln Park Zoo");
+
+}
+
 // CODE FOR INDEX.HTML AND "ALL BIKES" TOGGLE BUTTON
 
 // Perform an API call to the Divvy Bike station information endpoint.
@@ -263,64 +380,12 @@ d3.json("https://gbfs.divvybikes.com/gbfs/en/station_information.json").then(fun
     var stationInfo = infoRes.data.stations;
 
     fillStations(stationStatus, stationInfo, updatedAt, "bikes")
+    addAntPaths()
+    addLandmarks()
 
   });
 
 });
-
-
-// CODE FOR E-BIKE TOGGLE BUTTON
-// // Initialize all the LayerGroups that we'll use.
-// var layers = {
-//   EMPTY: new L.LayerGroup(),
-//   LOW: new L.LayerGroup(),
-//   NORMAL: new L.LayerGroup(),
-// };
-//Landmarks toggling
-var landmarkIcon = L.Icon.extend({
-  options: {
-      shadowUrl: 'static/img/markers_shadow.png',
-      iconSize:     [29, 40],
-      shadowSize:   [35, 16],
-      iconAnchor:   [22, 94],
-      shadowAnchor: [20, 64],
-      popupAnchor:  [-3, -76]
-  }
-});
-
-var instituteIcon = new landmarkIcon({iconUrl: 'static/img/whiteIcon_institute.png'}),
-    fountainIcon = new landmarkIcon({iconUrl: 'static/img/whiteIcon_fountain.png'}),
-    theaterIcon = new landmarkIcon({iconUrl: 'static/img/whiteIcon_theater.png'});
-    baseballIcon = new landmarkIcon({iconUrl: 'static/img/whiteIcon_baseball.png'});
-    basketballIcon = new landmarkIcon({iconUrl: 'static/img/whiteIcon_basketball.png'});
-    chinatownIcon = new landmarkIcon({iconUrl: 'static/img/whiteIcon_chinatown.png'});
-    cloudgateIcon = new landmarkIcon({iconUrl: 'static/img/whiteIcon_cloudgate.png'});
-    conservatoryIcon = new landmarkIcon({iconUrl: 'static/img/whiteIcon_conservatory.png'});
-    downtownIcon = new landmarkIcon({iconUrl: 'static/img/whiteIcon_downtown.png'});
-    footballIcon = new landmarkIcon({iconUrl: 'static/img/whiteIcon_football.png'});
-    marinaIcon = new landmarkIcon({iconUrl: 'static/img/whiteIcon_marina.png'});
-    pequodsIcon = new landmarkIcon({iconUrl: 'static/img/whiteIcon_pequods.png'});
-    navypierIcon = new landmarkIcon({iconUrl: 'static/img/whiteIcon_navypier.png'});
-    zooIcon = new landmarkIcon({iconUrl: 'static/img/whiteIcon_zoo.png'});
-
-L.marker([41.8796, -87.6237], {icon: instituteIcon}).addTo(map).bindPopup("The Art Institute");
-L.marker([41.8759, -87.6189], {icon: fountainIcon}).addTo(map).bindPopup("Buckingham Fountain");
-L.marker([41.8855, -87.6274], {icon: theaterIcon}).addTo(map).bindPopup("Chicago Theater");
-L.marker([41.9486, -87.6553], {icon: baseballIcon}).addTo(map).bindPopup("Wrigley Field");
-L.marker([41.8301, -87.6337], {icon: baseballIcon}).addTo(map).bindPopup("Guaranteed Rate Field");
-L.marker([41.8808, -87.6742], {icon: basketballIcon}).addTo(map).bindPopup("United Center");
-L.marker([41.8527, -87.6320], {icon: chinatownIcon}).addTo(map).bindPopup("China Town");
-L.marker([41.8828, -87.6233], {icon: cloudgateIcon}).addTo(map).bindPopup("Cloud Gate (a.k.a. 'The Bean')");
-L.marker([41.8864, -87.7172], {icon: conservatoryIcon}).addTo(map).bindPopup("Garfield Park Conservatory");
-L.marker([41.8780, -87.6315], {icon: downtownIcon}).addTo(map).bindPopup("The Loop");
-L.marker([41.8627, -87.6166], {icon: footballIcon}).addTo(map).bindPopup("Soldier Field");
-L.marker([41.8881, -87.6290], {icon: marinaIcon}).addTo(map).bindPopup("Marina City");
-L.marker([41.9220, -87.6645], {icon: pequodsIcon}).addTo(map).bindPopup("Pequods Pizza");
-L.marker([41.8919, -87.6100], {icon: navypierIcon}).addTo(map).bindPopup("Navy Pier");
-L.marker([41.9217, -87.6336], {icon: zooIcon}).addTo(map).bindPopup("Lincoln Park Zoo");
-
-
-
 
 
 //ebikes toggling
@@ -336,8 +401,8 @@ function bikeeToggle(bikeType) {
   });
   streetmap.addTo(map)
 
-  //create new layer
-  var ebikelayer = new L.LayerGroup()
+  // Add layers
+  // var ebikelayer = new L.LayerGroup()
 
   //create empty layers group
   d3.json("https://gbfs.divvybikes.com/gbfs/en/station_information.json").then(function (infoRes) {
@@ -349,81 +414,8 @@ function bikeeToggle(bikeType) {
 
       fillStations(stationStatus, stationInfo, updatedAt, "ebikes")
 
-      let antPolyline1 = L.polyline.antPath(lineOne, {
-        color: "red",
-        weight: 5
-      
-      })
-      antPolyline1.addTo(map)
-      let antPolyline2 = L.polyline.antPath(lineTwo, {
-        color: "green",
-        weight: 3
-      
-      })
-      antPolyline2.addTo(map)
-
-      let antPolyline3 = L.polyline.antPath(lineThree, {
-        color: "black",
-        weight: 3
-      })
-      antPolyline3.addTo(map)
-
-      let antPolyline4 = L.polyline.antPath(lineFour, {
-        color: "purple",
-        weight: 3
-    })
-      antPolyline4.addTo(map)
-
-      let antPolyline5 = L.polyline.antPath(lineFive, {
-        color: "black",
-        weight: 3,
-        pulseColor: "gold"
-      })
-      antPolyline5.addTo(map)
-
-      let antPolyline6 = L.polyline.antPath(lineSix, {
-        color: "black",
-        weight: 3,
-        pulseColor: "red"
-      })
-      antPolyline6.addTo(map)
-
-      let antPolyline8 = L.polyline.antPath(lineEight, {
-        color: "teal",
-        weight: 3, 
-        pulseColor: "black"
-      })
-      antPolyline8.addTo(map)
-
-      let antPolyline9 = L.polyline.antPath(lineNine, {
-        color: "brown",
-        weight: 3, 
-        pulseColor: "lightgreen"
-      })
-      antPolyline9.addTo(map)
-
-      let antPolyline10 = L.polyline.antPath(lineTen, {
-        color: "aqua",
-        weight: 3, 
-        pulseColor: "blue"
-      })
-      antPolyline10.addTo(map)
-
-      L.marker([41.8796, -87.6237], {icon: instituteIcon}).addTo(map).bindPopup("The Art Institute");
-      L.marker([41.8759, -87.6189], {icon: fountainIcon}).addTo(map).bindPopup("Buckingham Fountain");
-      L.marker([41.8855, -87.6274], {icon: theaterIcon}).addTo(map).bindPopup("Chicago Theater");
-      L.marker([41.9486, -87.6553], {icon: baseballIcon}).addTo(map).bindPopup("Wrigley Field");
-      L.marker([41.8301, -87.6337], {icon: baseballIcon}).addTo(map).bindPopup("Guaranteed Rate Field");
-      L.marker([41.8808, -87.6742], {icon: basketballIcon}).addTo(map).bindPopup("United Center");
-      L.marker([41.8527, -87.6320], {icon: chinatownIcon}).addTo(map).bindPopup("China Town");
-      L.marker([41.8828, -87.6233], {icon: cloudgateIcon}).addTo(map).bindPopup("Cloud Gate (a.k.a. 'The Bean')");
-      L.marker([41.8864, -87.7172], {icon: conservatoryIcon}).addTo(map).bindPopup("Garfield Park Conservatory");
-      L.marker([41.8780, -87.6315], {icon: downtownIcon}).addTo(map).bindPopup("The Loop");
-      L.marker([41.8627, -87.6166], {icon: footballIcon}).addTo(map).bindPopup("Soldier Field");
-      L.marker([41.8881, -87.6290], {icon: marinaIcon}).addTo(map).bindPopup("Marina City");
-      L.marker([41.9220, -87.6645], {icon: pequodsIcon}).addTo(map).bindPopup("Pequods Pizza");
-      L.marker([41.8919, -87.6100], {icon: navypierIcon}).addTo(map).bindPopup("Navy Pier");
-      L.marker([41.9217, -87.6336], {icon: zooIcon}).addTo(map).bindPopup("Lincoln Park Zoo");
+      addAntPaths()
+      addLandmarks()
     })
   });
 };
@@ -453,81 +445,24 @@ function bikecToggle(bikeType) {
 
       fillStations(stationStatus, stationInfo, updatedAt, "classicbikes")
 
-      let antPolyline1 = L.polyline.antPath(lineOne, {
-        color: "red",
-        weight: 5
-      
-      })
-      antPolyline1.addTo(map)
-      let antPolyline2 = L.polyline.antPath(lineTwo, {
-        color: "green",
-        weight: 3
-      
-      })
-      antPolyline2.addTo(map)
+      addAntPaths()
+      addLandmarks()
 
-      let antPolyline3 = L.polyline.antPath(lineThree, {
-        color: "black",
-        weight: 3
-      })
-      antPolyline3.addTo(map)
-
-      let antPolyline4 = L.polyline.antPath(lineFour, {
-        color: "purple",
-        weight: 3
-    })
-      antPolyline4.addTo(map)
-
-      let antPolyline5 = L.polyline.antPath(lineFive, {
-        color: "black",
-        weight: 3,
-        pulseColor: "gold"
-      })
-      antPolyline5.addTo(map)
-
-      let antPolyline6 = L.polyline.antPath(lineSix, {
-        color: "black",
-        weight: 3,
-        pulseColor: "red"
-      })
-      antPolyline6.addTo(map)
-
-      let antPolyline8 = L.polyline.antPath(lineEight, {
-        color: "teal",
-        weight: 3, 
-        pulseColor: "black"
-      })
-      antPolyline8.addTo(map)
-
-      let antPolyline9 = L.polyline.antPath(lineNine, {
-        color: "brown",
-        weight: 3, 
-        pulseColor: "lightgreen"
-      })
-      antPolyline9.addTo(map)
-
-      let antPolyline10 = L.polyline.antPath(lineTen, {
-        color: "aqua",
-        weight: 3, 
-        pulseColor: "blue"
-      })
-      antPolyline10.addTo(map)
-
-      L.marker([41.8796, -87.6237], {icon: instituteIcon}).addTo(map).bindPopup("The Art Institute");
-      L.marker([41.8759, -87.6189], {icon: fountainIcon}).addTo(map).bindPopup("Buckingham Fountain");
-      L.marker([41.8855, -87.6274], {icon: theaterIcon}).addTo(map).bindPopup("Chicago Theater");
-      L.marker([41.9486, -87.6553], {icon: baseballIcon}).addTo(map).bindPopup("Wrigley Field");
-      L.marker([41.8301, -87.6337], {icon: baseballIcon}).addTo(map).bindPopup("Guaranteed Rate Field");
-      L.marker([41.8808, -87.6742], {icon: basketballIcon}).addTo(map).bindPopup("United Center");
-      L.marker([41.8527, -87.6320], {icon: chinatownIcon}).addTo(map).bindPopup("China Town");
-      L.marker([41.8828, -87.6233], {icon: cloudgateIcon}).addTo(map).bindPopup("Cloud Gate (a.k.a. 'The Bean')");
-      L.marker([41.8864, -87.7172], {icon: conservatoryIcon}).addTo(map).bindPopup("Garfield Park Conservatory");
-      L.marker([41.8780, -87.6315], {icon: downtownIcon}).addTo(map).bindPopup("The Loop");
-      L.marker([41.8627, -87.6166], {icon: footballIcon}).addTo(map).bindPopup("Soldier Field");
-      L.marker([41.8881, -87.6290], {icon: marinaIcon}).addTo(map).bindPopup("Marina City");
-      L.marker([41.9220, -87.6645], {icon: pequodsIcon}).addTo(map).bindPopup("Pequods Pizza");
-      L.marker([41.8919, -87.6100], {icon: navypierIcon}).addTo(map).bindPopup("Navy Pier");
-      L.marker([41.9217, -87.6336], {icon: zooIcon}).addTo(map).bindPopup("Lincoln Park Zoo");
+    //   L.marker([41.8796, -87.6237], { icon: instituteIcon }).addTo(map).bindPopup("The Art Institute");
+    //   L.marker([41.8759, -87.6189], { icon: fountainIcon }).addTo(map).bindPopup("Buckingham Fountain");
+    //   L.marker([41.8855, -87.6274], { icon: theaterIcon }).addTo(map).bindPopup("Chicago Theater");
+    //   L.marker([41.9486, -87.6553], { icon: baseballIcon }).addTo(map).bindPopup("Wrigley Field");
+    //   L.marker([41.8301, -87.6337], { icon: baseballIcon }).addTo(map).bindPopup("Guaranteed Rate Field");
+    //   L.marker([41.8808, -87.6742], { icon: basketballIcon }).addTo(map).bindPopup("United Center");
+    //   L.marker([41.8527, -87.6320], { icon: chinatownIcon }).addTo(map).bindPopup("China Town");
+    //   L.marker([41.8828, -87.6233], { icon: cloudgateIcon }).addTo(map).bindPopup("Cloud Gate (a.k.a. 'The Bean')");
+    //   L.marker([41.8864, -87.7172], { icon: conservatoryIcon }).addTo(map).bindPopup("Garfield Park Conservatory");
+    //   L.marker([41.8780, -87.6315], { icon: downtownIcon }).addTo(map).bindPopup("The Loop");
+    //   L.marker([41.8627, -87.6166], { icon: footballIcon }).addTo(map).bindPopup("Soldier Field");
+    //   L.marker([41.8881, -87.6290], { icon: marinaIcon }).addTo(map).bindPopup("Marina City");
+    //   L.marker([41.9220, -87.6645], { icon: pequodsIcon }).addTo(map).bindPopup("Pequods Pizza");
+    //   L.marker([41.8919, -87.6100], { icon: navypierIcon }).addTo(map).bindPopup("Navy Pier");
+    //   L.marker([41.9217, -87.6336], { icon: zooIcon }).addTo(map).bindPopup("Lincoln Park Zoo");
     });
   })
 };
