@@ -43,11 +43,16 @@ body,
 .nav {
   background: #41B4E4;
   color: white;
-  a: white;
+  /* text: white; */
   }
 
+.nav-link{
+  background: #41B4E4;
+  color: white;
+}
+
 a:link {
-  color: #41b4e4;
+  color: white;
   text-decoration: none;
 }
 
@@ -57,7 +62,7 @@ a:visited {
 }
 
 a:hover {
-  color: white;
+  color: #555;
   background-color:  #41b4e4;
   text-decoration: underline;
 }
