@@ -1,11 +1,11 @@
 # Plan Your Divvy Trip
 
-See Chicago up close when you bike around the city. Use the [website](https://ruthhinkle.github.io/project-2/index.html) to find a bike station close to you or your destination, check the station's capacity to find available bikes, and bike to the nearest landmark. 
+See Chicago up close when you bike around the city. Use the [website](https://ruthhinkle.github.io/find-a-divvy-bike/) to find a bike station close to you or your destination, check the station's capacity to find available bikes, and bike to the nearest landmark. 
 
 If you like to plan ahead, pick out a landmark or two and find the closest stations by looking at the map. 
 
 ## How to Use
-Go to [our website](https://ruthhinkle.github.io/project-2/index.html) to plan your trip.
+Go to [our website](https://ruthhinkle.github.io/find-a-divvy-bike/) to plan your trip.
 
 <details> <summary markdown="span"><strong> 📍 Check Nearby Stations</strong></summary>
   To find a bike, check nearby stations and look at their status to see if there are bikes available. Light-blue pins indicate  stations full of bikes, dark-blue pins indicate stations with less than 5 bikes, and red pins indicate empty stations. When you're done with your ride, red stations are great place to drop off your bike.
