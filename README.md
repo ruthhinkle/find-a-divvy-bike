@@ -30,7 +30,7 @@ Go to [our website](https://ruthhinkle.github.io/find-a-divvy-bike/) to plan you
 * Design a neutral template to be used with GBFS data from any other city following that data standard
 
 ## 📁 Installation
-<strong>To plan a Chicago Divvy trip</strong>, use [our website](https://ruthhinkle.github.io/project-2/index.html).
+<strong>To plan a Chicago Divvy trip</strong>, use [our website](https://ruthhinkle.github.io/find-a-divvy-bike/).
 
 <strong>To run on your local machine, clone this repository.</strong> No extra installation is necessary.
 
